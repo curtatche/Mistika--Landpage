@@ -2,6 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const AboutSection = dynamic(() => import('./sections/AboutSection'));
+const ConceptSection = dynamic(() => import('./sections/ConceptSection'));
+const BonusSection = dynamic(() => import('./sections/BonusSection'));
+const TestimonialsSection = dynamic(() => import('./sections/TestimonialsSection'));
+const FaqSection = dynamic(() => import('./sections/FaqSection'));
+const PricingSection = dynamic(() => import('./sections/PricingSection'));
+const FinalSection = dynamic(() => import('./sections/FinalSection'));
 
 export default function LandingPage() {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -256,10 +266,24 @@ export default function LandingPage() {
       </div>
 
       <section id="hero">
+        <Image
+          src="https://curtai.online/fundo1.jpg"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: 'cover', zIndex: 0 }}
+        />
         <div className="hero-layout">
           <div className="hero-inner">
             <div className="hero-logo">
-              <img src="https://curtai.online/logosf.png" alt="Mistika" fetchPriority="high" />
+              <Image
+                src="https://curtai.online/logosf.png"
+                alt="Mistika"
+                width={280}
+                height={80}
+                priority
+                style={{ width: '100%', height: 'auto' }}
+              />
             </div>
             <div className="htag">Desenvolvimento pessoal feminino</div>
             <h1>Domine a<br /><em>Arte da</em><br />Conquista</h1>
@@ -355,202 +379,19 @@ export default function LandingPage() {
         <div className="pitem"><div className="pico">🛡️</div><div><span className="pnum">30</span><div className="plbl">dias de garantia</div></div></div>
       </div>
 
-      <section id="about" className="sec">
-        <div className="about-grid">
-          <div className="reveal">
-            <div className="aquote">Não é sobre<br />beleza,<br /><em>é sobre energia.</em><span className="acc">O magnetismo real vem da harmonia entre sua psicologia e sua expressão externa.</span></div>
-          </div>
-          <div className="reveal">
-            <div className="slbl">A verdade que ninguém te contou</div>
-            <p className="abody">A ciência da atração não tem uma relação com os padrões estéticos. <strong>Mulheres verdadeiramente magnéticas</strong> desenvolveram algo que vai muito além da aparência: uma presença que transforma ambientes, conversas e relacionamentos.</p>
-            <div className="pillars">
-              <div className="pillar">
-                <div className="pil-ico">🧠</div>
-                <div>
-                  <div className="pil-t">Psicologia da Atração</div>
-                  <div className="pil-d">Entenda como a mente masculina funciona e o que cria atração genuína e duradoura.</div>
-                </div>
-              </div>
-              <div className="pillar">
-                <div className="pil-ico">⚡</div>
-                <div>
-                  <div className="pil-t">Energia e Presença</div>
-                  <div className="pil-d">Como sua frequência interna determina quem você atrai — e quem você repele.</div>
-                </div>
-              </div>
-              <div className="pillar">
-                <div className="pil-ico">🌑</div>
-                <div>
-                  <div className="pil-t">Mistério e Ambiguidade</div>
-                  <div className="pil-d">A arte de ser inesquecível sem se entregar de bandeja. O poder do não-dito.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
-      <section id="conceito" className="sec">
-        <div className="chead reveal">
-          <div className="slbl">O Conceito da Mulher Completa</div>
-          <h2>Não entregamos apenas um Aplicativo.<br />Entregamos um <em>ecossistema</em><br />de transformação.</h2>
-          <p className="sdesc">Você se torna o que escolhe cultivar — nos seus relacionamentos, na sua presença, no seu autoconhecimento.</p>
-        </div>
-        <div className="cgrid">
-          {[
-            { n: '01', i: '🔮', t: 'Autoconhecimento como Poder', d: 'Descubra seus padrões emocionais, gatilhos e pontos cegos. Quem se conhece profundamente não precisa de aprovação externa.' },
-            { n: '02', i: '✨', t: 'Mistério & Ambiguidade', d: 'Aprenda a diferença entre ser misteriosa e ser ambígua — e como usar as duas para criar atração irresistível.' },
-            { n: '03', i: '👑', t: 'Presença Magnética', d: 'Linguagem corporal, comunicação e o que você não diz. Como construir uma presença lembrada depois que você sai do ambiente.' },
-            { n: '04', i: '💬', t: 'Comunicação com Impacto', d: 'Palavras que ficam. Como se expressar com precisão, criar intriga e conduzir conversas com leveza e intenção.' },
-            { n: '05', i: '🛡️', t: 'Inteligência Emocional', d: 'Leia comportamentos, reconheça padrões cedo e tome decisões a partir da sua cabeça — não do medo.' },
-            { n: '06', i: '🌹', t: 'Independência como Atração', d: 'Por que mulheres que não precisam são as mais desejadas. Como construir uma vida tão completa que atrai pelo que é.' },
-          ].map((c) => (
-            <div key={c.n} className="cc reveal">
-              <div className="cn">{c.n}</div>
-              <span className="cicon">{c.i}</span>
-              <div className="ct">{c.t}</div>
-              <p className="cd">{c.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ConceptSection />
 
-      <section id="bonus" className="sec">
-        <div className="bhead reveal">
-          <div className="slbl">Bônus exclusivos</div>
-          <h2>A <em>jornada</em> exata<br />para a sua transformação</h2>
-          <p className="sdesc">Ao adquirir o acesso ao aplicativo, você terá 30 dias de acompanhamento diário com vídeos explicativos, metas e tarefas para transformar sua vida.</p>
-        </div>
-        <div className="bgifts">
-          <div className="gc reveal">
-            <div className="gtag">✦ Bônus Exclusivo</div>
-            <span className="gico">✍️</span>
-            <div className="gt">App de Escrita Terapêutica</div>
-            <p className="gd">Desbloqueie suas travas emocionais e cure feridas do passado através da escrita guiada. Um espaço seguro para processar, crescer e se libertar.</p>
-            <div className="gv">Incluído sem custo adicional</div>
-          </div>
-          <div className="gc reveal">
-            <div className="gtag">🎁 Presente</div>
-            <span className="gico">🌙</span>
-            <div className="gt">Planner Lei da Atração</div>
-            <p className="gd">Manifeste a vida e o relacionamento dos seus sonhos com nosso guia de visualização diária. Combine intenção com ação para criar resultados reais.</p>
-            <div className="gv">Incluído sem custo adicional</div>
-          </div>
-          <div className="gc gc-ai reveal">
-            <div className="gtag gtag-ai">🤖 Novo · Exclusivo</div>
-            <span className="gico">💬</span>
-            <div className="gt">Conselheira Lyra — IA 24/7</div>
-            <p className="gd">Sua conselheira pessoal disponível a qualquer hora. Recebeu uma mensagem e não sabe como responder? Cole aqui e receba a orientação exata — sem julgamentos.</p>
-            <ul className="gc-ai-list">
-              <li><span>✦</span>&quot;Como respondo sem parecer ansiosa?&quot;</li>
-              <li><span>✦</span>&quot;Ele sumiu — devo falar primeiro?&quot;</li>
-              <li><span>✦</span>&quot;O que esse comportamento significa?&quot;</li>
-              <li><span>✦</span>&quot;Estou agindo certo ou errando?&quot;</li>
-            </ul>
-            <div className="gv gv-ai">✦ Disponível 24h · 7 dias por semana · Incluso no acesso</div>
-          </div>
-        </div>
-      </section>
+      <BonusSection />
 
-      <section id="depos" className="sec">
-        <div className="dhead reveal">
-          <div className="slbl">Histórias reais</div>
-          <h2>Elas já <em>mudaram</em><br />o jogo delas</h2>
-        </div>
-        <div className="dgrid">
-          {[
-            { a: 'Camila R.', l: 'São Paulo · 29 anos', q: 'Depois de meses rodando em círculos, o Mistika me fez enxergar meu padrão. Hoje me relaciono de um lugar de poder e não de necessidade.', i: '👩' },
-            { a: 'Fernanda M.', l: 'Rio de Janeiro · 33 anos', q: 'O conceito de energia mudou tudo pra mim. Parei de tentar ser o que eles querem e comecei a ser quem sou. O resultado foi imediato.', i: '👩‍🦱' },
-            { a: 'Júlia S.', l: 'Belo Horizonte · 26 anos', q: 'O App de Escrita Terapêutica foi o bônus que mais me transformou. Processei coisas que carregava há anos. Vale muito mais que o investimento.', i: '👩‍🦰' },
-          ].map((d, i) => (
-            <div key={i} className="dcard reveal">
-              <div className="dq">&quot;</div>
-              <div className="dstars">★★★★★</div>
-              <p className="dtext">{d.q}</p>
-              <div className="dauthor">
-                <div className="dava">{d.i}</div>
-                <div>
-                  <div className="dname">{d.a}</div>
-                  <div className="dloc">{d.l}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <TestimonialsSection />
 
-      <section id="pricing" className="sec">
-        <div className="pricewrap">
-          <div className="pricehead reveal">
-            <div className="slbl">Seu investimento</div>
-            <h2>Comece hoje.<br /><em>Mude para sempre.</em></h2>
-          </div>
-          <div className="pcard reveal">
-            <div className="pcardtop">
-              <div className="pey">✦ Acesso completo · Vitalício ✦</div>
-              <div className="ppwas">De R$ 49,90</div>
-              <div className="ppprice"><sup>R$</sup>29<sub>,90</sub></div>
-              <div className="psep">ou</div>
-              <div className="pparc">10x de R$ 2,99 <span>sem juros</span></div>
-              <div className="pcafe2">✦ Investimento menor que um cafezinho por mês.</div>
-            </div>
-            <div className="pdiv" />
-            <div className="pcinc">
-              <div className="inctitle">O que está incluso</div>
-              <ul className="inclist">
-                <li>30 dias de acompanhamento diário para transformar sua vida</li>
-                <li className="gift">Bônus — App de Escrita Terapêutica</li>
-                <li className="gift">Presente — Planner Lei da Atração</li>
-                <li className="gift">Bônus — Conselheira IA 24/7</li>
-                <li>Comunidade VIP de mulheres na jornada</li>
-                <li>Atualizações gratuitas para sempre</li>
-              </ul>
-              <button onClick={() => handleCheckout()} className="btncta">✦ Começar Agora</button>
-              <p className="ctahint">🔒 Pagamento 100% seguro · Acesso imediato após confirmação</p>
-            </div>
-            <div className="pdiv" />
-            <div className="guar">
-              <div className="guarico">🛡️</div>
-              <div>Garantia incondicional de 30 dias. Não gostou? Devolvemos 100% do seu investimento, sem perguntas.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection handleCheckout={handleCheckout} />
 
-      <section id="faq" className="sec">
-        <div className="faqwrap">
-          <div className="faqhead reveal">
-            <div className="slbl">Dúvidas frequentes</div>
-            <h2>Tudo que você<br />precisa <em>saber</em></h2>
-          </div>
-          {[
-            { q: 'Como funciona o acesso?', a: 'Após o pagamento confirmado, você recebe acesso imediato por e-mail. O conteúdo fica disponível 24/7 no app para iOS e Android, além da versão web.' },
-            { q: 'O parcelamento tem juros?', a: 'Não. Você parcela em até 10x de R$ 2,99 sem nenhum acréscimo. O valor total permanece R$ 29,90.' },
-            { q: 'É só para mulheres solteiras?', a: 'Não. O Mistika é para qualquer mulher que quer se conhecer melhor e se relacionar com mais poder — solteira, namorando ou em qualquer fase da vida.' },
-            { q: 'Os bônus estão inclusos no R$ 29,90?', a: 'Sim! Todos os bônus estão inclusos no acesso principal. Tudo por R$ 29,90 à vista ou 10x de R$ 2,99.' },
-            { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeita, basta pedir o reembolso e devolvemos 100% do valor pago.' },
-          ].map((item, i) => (
-            <div key={i} className="fi">
-              <button className="fq" onClick={() => toggleFaq(i)}>
-                {item.q} <div className="fplus">{openFaqIndices.includes(i) ? '-' : '+'}</div>
-              </button>
-              {openFaqIndices.includes(i) && <div className="fb" style={{ display: 'block' }}>{item.a}</div>}
-            </div>
-          ))}
-        </div>
-      </section>
+      <FaqSection openFaqIndices={openFaqIndices} toggleFaq={toggleFaq} />
 
-      <section id="final">
-        <div className="fininner reveal">
-          <div className="slbl">Última chamada</div>
-          <h2>Você não precisa<br />de sorte.<br /><em>Precisa de estratégia.</em></h2>
-          <p>Mais de 847 mil mulheres já iniciaram a jornada. A versão de você que atrai o que merece começa com uma decisão de R$ 2,99.</p>
-          <div className="finbtns">
-            <button onClick={() => handleCheckout()} className="btnfin">✦ Começar Agora</button>
-            <a href="#conceito" className="btnghost">Ver o que está incluso</a>
-          </div>
-        </div>
-      </section>
+      <FinalSection handleCheckout={handleCheckout} />
 
       <div className={`mp-overlay ${checkoutLoading ? 'active' : ''}`} id="mp-overlay">
         <div className="mp-spinner" />
@@ -570,7 +411,13 @@ export default function LandingPage() {
 
       {toast.show && toast.person && (
         <div className="sales-toast active" id="salesToast">
-          <img src={toast.person.img} alt={toast.person.name} className="st-img" />
+          <Image
+            src={toast.person.img}
+            alt={toast.person.name}
+            width={44}
+            height={44}
+            className="st-img"
+          />
           <div>
             <div className="st-title">{toast.person.name} de {toast.person.loc}</div>
             <div className="st-desc">Acabou de adquirir o acesso vitalício</div>
@@ -580,7 +427,13 @@ export default function LandingPage() {
       )}
 
       <footer>
-        <img src="https://curtai.online/logosf.png" alt="Mistika" style={{ height: '28px', width: 'auto' }} loading="lazy" />
+        <Image
+          src="https://curtai.online/logosf.png"
+          alt="Mistika"
+          width={150}
+          height={28}
+          style={{ height: '28px', width: 'auto' }}
+        />
         <div className="flinks">
           <a href="privacidade.html">Privacidade</a>
           <a href="termos.html">Termos de Uso</a>
