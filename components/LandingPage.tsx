@@ -13,6 +13,7 @@ export default function LandingPage() {
   const [videoProgress, setVideoProgress] = useState(0);
   const [cookiesAccepted, setCookiesAccepted] = useState<boolean | null>(null);
   const [showCookieBanner, setShowCookieBanner] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     // ── CHECK COOKIES ──
@@ -163,6 +164,13 @@ export default function LandingPage() {
       (window as any).onYouTubeIframeAPIReady = initPlayer;
     }
 
+    (window as any).ativarSom = () => {
+      if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+        ytPlayer.unMute();
+        setIsMuted(false);
+      }
+    };
+
     const iniciarTimerUrgencia = () => {
       const KEY = 'mistika_urgency_end';
       let end: number;
@@ -274,7 +282,7 @@ export default function LandingPage() {
               <div className="yt-wrap">
                 <div id="ytPlayer" />
                 <div className="yt-blocker" />
-                {!videoEnded && (
+                {!videoEnded && isMuted && (
                   <div
                     id="soundBtn"
                     style={{

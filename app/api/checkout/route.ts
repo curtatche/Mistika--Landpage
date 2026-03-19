@@ -22,7 +22,7 @@ export async function POST() {
       items: [
         {
           id: 'mistika-desafio-30',
-          title: 'Mistika — O Despertar (Jornada de 30 Dias)',
+          title: 'Mistika — O Despertar',
           description: '30 dias de acompanhamento diário + bônus exclusivos',
           quantity: 1,
           currency_id: 'BRL',
