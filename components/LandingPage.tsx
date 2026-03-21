@@ -217,6 +217,11 @@ export default function LandingPage() {
     const overlay = document.getElementById('mp-overlay');
     overlay?.classList.add('active');
 
+    // Tracking Facebook Pixel
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout');
+    }
+
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',
