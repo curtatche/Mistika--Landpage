@@ -1,7 +1,8 @@
 import type {Metadata} from 'next';
+import React from 'react';
 import { Playfair_Display, Jost } from 'next/font/google';
 import Script from 'next/script';
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -28,8 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${jost.variable}`}>
       <head>
-        <Script id="fb-pixel" strategy="afterInteractive">
-          {`
+        <Script id="fb-pixel" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -40,8 +40,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '410794899896248');
             fbq('track', 'PageView');
-          `}
-        </Script>
+          ` }} />
       </head>
       <body suppressHydrationWarning>
         <noscript>
